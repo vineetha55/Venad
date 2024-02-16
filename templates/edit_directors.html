@@ -1,0 +1,137 @@
+<!-- Content Wrapper. Contains page content -->
+{% include 'header.html' %}
+<div class="content-wrapper">
+    {% include 'left_navigation.html' %}
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Director Details Information
+      <small id="date" class="col-md-4"></small>
+      <!-- <small>Optional description</small> -->
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="/dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="/directors/"><i class="fa fa-dashboard"></i> Back to List</a></li>
+      <li class="active"></li>
+    </ol>
+  </section>
+  <form class="form-horizontal" method="POST" action="/edit_directors/{{d.id}}" enctype="multipart/form-data">{% csrf_token %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- right column -->
+        <div class="col-md-12">
+          <!-- Horizontal Form -->
+          <div class="box">
+
+            <!-- /.box-header -->
+            <!-- form start -->
+            <!-- radio -->
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            </div>
+            <div class="box-body">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10">
+                <div class="panel panel-danger" style="box-shadow:2px 2px 2px 2px black;">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><b>DIRECTOR DETAILS INFORMATION</b></h3>
+                  </div>
+                  <div class="panel-body" style="font-weight:bold;">
+                    <div class="form-group">
+                      <div class="col-md-6">
+                        <label>Name</label>
+                        <input type="text" autofocus class="form-control" name="name" value="{{d.director_name}}"  style="text-transform:uppercase;">
+                      </div>
+
+                      <div class="col-md-6">
+                        <label>Designation</label>
+                        <input type="text" autofocus class="form-control" name="d_details_designation" value="{{d.director_designation}}"  style="text-transform:uppercase;">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-4">
+                        <label for="">Date Of Birth</label>
+                        <input type="date" class="form-control" name="dob"value="{{ d.director_dob|date:'Y-m-d' }}" >
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>Phone <span style="color:red"></span></label>
+                        <input type="text" autofocus class="form-control" name="phone" value="{{d.director_phone}}">
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>Email <span style="color:red"></span></label>
+                        <input type="text" autofocus class="form-control" name="email"value="{{d.director_email}}" >
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <label>Address <span style="color:red"></span></label>
+                        <textarea name="address" class="form-control" id="" cols="30" rows="1">{{d.director_address}}</textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+
+                      <div class="col-md-3">
+                        <label>DIN <span style="color:red"></span></label>
+                        <input type="text" autofocus class="form-control" name="din" value="{{d.director_din}}">
+                      </div>
+                      <div class="col-md-3">
+                        <label>Father Name <span style="color:red"></span></label>
+                        <input type="text" autofocus class="form-control" name="father" value="{{d.director_father_name}}">
+                      </div>
+
+                      <div class="col-md-3">
+                        <label>PAN <span style="color:red"></span></label>
+                        <input type="text" autofocus class="form-control" name="pan" value="{{d.director_pan}}">
+                      </div>
+                      <div class="col-md-3">
+                        <label>AADHAR NO<span style="color:red"></span></label>
+                        <input type="text" autofocus class="form-control" name="aadhar" value="{{d.director_aadhaar}}">
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-6">
+                        <label for="">Upload Photo</label>
+                          <p>Currently &nbsp; {{d.director_photo}}&nbsp;&nbsp;<img src="{{d.director_photo}}" width="40" height="30"></p>
+                        <input type="file" name="photo" id="" class="form-control">
+
+                      </div>
+                      <div class="col-md-6">
+                        <label for="">Upload Signature</label>
+                             <p>Currently &nbsp; {{d.director_signature}}&nbsp;&nbsp;<img src="{{d.director_signature}}" width="40" height="30"></p>
+                        <input type="file" name="signature" id="" class="form-control">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-4">
+                <a href="/directors">  <button type="button" class="btn btn-danger">Cancel</button></a>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!--/.col (right) -->
+</div>
+</section>
+</form>
+<!-- /.content -->
+</div>
+{% include 'footer.html' %}
+<!-- /.content-wrapper -->

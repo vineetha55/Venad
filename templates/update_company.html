@@ -1,0 +1,191 @@
+{% include 'header.html' %}
+
+<style type="text/css">
+  .fsize {
+    font-size: 16px;
+  }
+</style>
+
+{% include 'left_navigation.html' %}
+<div class="content-wrapper" style="background-color: #eef1f5;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Basic Information
+      <!-- <small>Optional description</small> -->
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="/dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="/basic_info_cmp/"><i class="fa fa-dashboard"></i> Back to List</a></li>
+      <li class="active">Basic Information</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- right column -->
+      <div class="col-md-12">
+        <!-- Horizontal Form -->
+        <div class="box box-info container">
+          <div class="box-header">
+
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" method="POST" action="/save_company/" enctype="multipart/form-data">{% csrf_token %}
+            <!-- radio -->
+            <div class="row">
+              <div class="col-md-10">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+                </div>
+              </div>
+            </div>
+
+              <div class="box-body">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10">
+                <div class="panel panel-default" style="box-shadow:2px 2px 2px 2px black;">
+                  <div class="panel-heading">
+                    <b>Company Details </b>
+                  </div>
+                  <div class="panel-body">
+                <div class="">
+
+                      <div class="form-group">
+                      <div class="col-md-3">
+                        <label>Corporate Identification Number(CIN)</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="cin" value="{{d.cin}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+                        <div class="col-md-6">
+                        <label>Company Name</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="CompanyName" value="{{d.CompanyName}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+
+                        <div class="col-md-3">
+                        <label>Registration Number</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="reg_no" value="{{d.reg_no}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                      <div class="col-md-4">
+                        <label>RoC</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="roc" value="{{d.roc}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+                        <div class="col-md-4">
+                        <label>Company Category</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="category" value="{{d.category}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+
+                        <div class="col-md-4">
+                        <label>Company SubCategory</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="sub_category" value="{{d.sub_category}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+
+                      </div>
+
+                      <div class="form-group">
+                      <div class="col-md-3">
+                        <label>Class Of Company</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="class_company" value="{{d.class_company}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+                      <div class="col-md-3">
+                        <label>Date of Incorporation</label>
+                          <input type="Date" data-pms-required="true" class="form-control input-sm" name="start_date" value="{{ d.start_date|date:'Y-m-d' }}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+                        <div class="col-md-3">
+                        <label>Age of Company</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="age_company" value="{{d.age_company}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+
+                        <div class="col-md-3">
+                        <label>Total Members</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="total_members" value="{{d.total_members}}" style="text-transform: uppercase;font-size:16px;">
+                        </div>
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <div class="col-md-12">
+                        <label>Address</label>
+                          <textarea rows="1" name="address" data-pms-required="true" class="form-control input-sm" style="font-size:16px;">{{d.address}}</textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+
+                        <div class="col-md-3">
+                        <label>Phone (1)</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="mobile1" value="{{d.mobile1}}" style="font-size:16px;">
+                        </div>
+
+                        <div class="col-md-3">
+                        <label>Phone (2)</label>
+                          <input type="text" class="form-control input-sm" name="mobile2" value="{{d.mobile2}}" style="font-size:16px;">
+                        </div>
+
+
+                        <div class="col-md-3">
+                        <label>Email (1)</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="email1" value="{{d.email1}}" style="font-size:16px;">
+                        </div>
+
+                        <div class="col-md-3">
+                        <label>Email (2)</label>
+                          <input type="text" class="form-control input-sm" name="email2" value="{{d.email2}}" style="font-size:16px;">
+                        </div>
+                  </div>
+
+                      <div class="form-group">
+
+                        <div class="col-md-4">
+                        <label>Website</label>
+                          <input type="text" class="form-control input-sm" name="website" value="{{d.website}}" style="font-size:16px;">
+                        </div>
+
+                        <div class="col-md-4">
+                        <label>GSTIN No</label>
+                          <input type="text" data-pms-required="true" class="form-control input-sm" name="gstin" value="{{d.gstin}}" style="font-size:16px;text-transform: uppercase;">
+                        </div>
+
+                        <div class="col-md-4">
+                        <label>Logo</label>
+
+                          <input type="file" id="logo1" class="form-control input-sm" name="logo" >
+                        </div>
+                  </div>
+
+                  <div class="form-group">
+
+                       <div class="col-md-12">
+                       <label>Company Activity</label>
+                         <textarea rows="4" name="activity" data-pms-required="true" class="form-control input-sm" style="font-size:16px;">{{d.activity}}</textarea>
+                       </div>
+                     </div>
+
+
+                </div>
+                  </div></div></div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer" align="right">
+                <div class="col-md-9">
+                <a href="/basic_info_cmp" class="btn btn-danger">Cancel</a>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+              </div>
+
+            <!-- /.box-footer -->
+          </form>
+        </div>
+        <!-- /.box -->
+      </div>
+      <!--/.col (right) -->
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% include 'footer.html' %}

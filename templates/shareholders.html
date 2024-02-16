@@ -1,0 +1,162 @@
+<!-- Content Wrapper. Contains page content -->
+{% include 'header.html' %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    {% include 'left_navigation.html' %}
+    <section class="content-header">
+        <h1>
+            Shareholders Information
+            <small id="date" class="col-md-4"></small>
+            <!-- <small>Optional description</small> -->
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/add_shareholder"><i class="fa fa-dashboard"></i> Back To Add</a></li>
+            <li class="active"></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="box">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group margin">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-danger nohover">Member ID</button>
+                                </div><!-- /btn-group -->
+                              <input type="text" name="member_mid" placeholder="" id="member_mid" class="form-control">
+                              <!--   <select name="member_mid" id="member_mid" class="form-control">
+                                    <option value="">SELECT</option>
+                                    <?php foreach($member_id as $mem_id_list){ ?>
+                                    <option value="<?php echo $mem_id_list->member_mid ?>"><?php echo $mem_id_list->member_mid ?></option>
+                                    <?php } ?>
+                                </select> -->
+                            </div><!-- /input-group -->
+                        </div>
+                       <!--  <div class="col-md-3">
+                            <div class="input-group margin">
+                                <div class="input-group-btn">
+                                <button type="button" class="btn btn-danger nohover">Date </button>
+                                </div>
+                                <input id="pmsDateStart" type="text" data-validation-optional="true" data-pms-max-date="today" data-pms-type="date" name="start_date" data-pms-date-to="pmsDateEnd" class="col-md-5 form-control" placeholder="dd/mm/yyyy" >
+                                <span tabindex="-1" class="input-group-btn select-calendar date-range"><button type="button" tabindex="-1" class="btn btn-default"><i class=" fa fa-calendar"></i></button></span>
+
+                                <input id="pmsDateEnd" type="text" data-validation-optional="true" data-pms-type="date" name="end_date" data-pms-date-from="pmsDateStart" class="col-md-5 form-control" placeholder="dd/mm/yyyy" >
+                                <span tabindex="-1" class="input-group-btn select-calendar date-range"><button type="button" tabindex="-1" class="btn btn-default"><i class=" fa fa-calendar"></i></button></span>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <button type="button" id="search" class="btn bg-orange btn-flat margin" onclick="<?php if (isset($values->mainhead_id)) echo $values->mainhead_id; ?>">Search</button>
+                                <a href="/add_shareholder" class="btn btn-danger"><i class="fa fa-plus-square"></i> Add Shareholder</a>
+                               &nbsp; <a class="btn btn-success" href="<?php echo base_url();?>Shareholder/Pdf_shareholder/"><i class="fa fa-download"></i> Generate PDF</a>
+                               &nbsp;
+                                        <div class="dropdown" style="margin-top:10px;float:right;">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Export
+                                                <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dataExport" data-type="csv">CSV</a></li>
+                                                <li><a class="dataExport" data-type="excel">XLS</a></li>
+                                                <li><a  class="dataExport" data-type="txt">TXT</a></li>
+                                            </ul>
+                                        </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-2"></div>
+<div class="col-md-4" style="margin-top:10px;">
+    <div class="input-group">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-danger nohover"><small>SELECT COLUMNS</small></button>
+        </div>
+        <select class="form-control" name="">
+            <option value="0">SL_NO</option>
+            <option value="1">MEMBER_ID</option>
+            <option value="2">SHAREHOLDER_NAME</option>
+            <option value="3">DATE_OF_BIRTH</option>
+            <option value="4">ADDRESS</option>
+            <option value="5">PHONE_NUMBER</option>
+            <option value="6">AADHAAR_NO</option>
+            <option value="7">PAN_NO</option>
+            <option value="8">SHARES_HELD</option>
+            <option value="9">DATE_OF_JOINING</option>
+            <option value="10">BANK_DETAILS</option>
+            <option value="11">NOMINEE_DETAILS</option>
+            <option value="12">OPENING_BALANCE</option>
+            <option value="13">CURRENT_BALANCE</option>
+        </select>
+    </div>
+</div>
+
+</div>
+ <br>
+</div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive" id="dataTable1">
+                    <table id="classinfo_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>SINO</th>
+                                <th>MEMBER_ID</th>
+                                <th>SHAREHOLDER_NAME&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                <th>DATE_OF_BIRTH</th>
+                                <th>ADDRESS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                <th>PHONE_NUMBER</th>
+                                <th>AADHAAR_NO</th>
+                                <th>PAN_NO</th>
+                                <th>SHARES_HELD</th>
+                                <th>DATE_OF_JOINING</th>
+                                 <th>BANK_DETAILS</th>
+                                 <th>NOMINEE_DETAILS</th>
+                                 <th>OPENING_BALANCE(PURCHASE)</th>
+                                 <th>CURRENT_BALANCE(PURCHASE)</th>
+                                <th>
+                                    <center>EDIT/DELETE</center>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for entry in data %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ entry.Shareholder_id }}</td>
+        <td>{{ entry.SHAREHOLDER_NAME }}</td>
+        <td>{{ entry.DATE_OF_BIRTH }}</td>
+        <td>{{ entry.ADDRESS }}</td>
+        <td>{{ entry.PHONE_NUMBER }}</td>
+        <td>{{ entry.AADHAAR_NO }}</td>
+        <td>{{ entry.PAN_NO }}</td>
+        <td>{{ entry.SHARES_HELD }}</td>
+        <td>{{ entry.DATE_OF_JOINING }}</td>
+        <td>{{ entry.BANK_NAME }},{{ entry.BRANCH_NAME }},{{ entry.BANK_ACCNO }},{{ entry.BANK_ACCNO }}</td>
+        <td>{{ entry.NOMINEE_NAME }},{{entry.NOMINEE_RELATION}},{{entry.NOMINEE_ADDRESS}}</td>
+        <td>{{ entry.OPENING_BALANCE }}</td>
+        <td>{{ entry.CURRENT_BALANCE }}</td>
+          <td><a href="/edit_shareholder/{{entry.id}}"><i class="fa fa-edit"></i></a>
+                <a href="/delete_shareholder/{{entry.id}}" onclick="return confirm('Are You Sure')"> <i class="fa fa-trash-o"></i></a>
+             </td>
+      </tr>
+    {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+{% include 'footer.html' %}
+<script>
+   $(document).ready(function() {
+      $('#classinfo_table').DataTable();
+   });
+</script>
+<!-- /.content-wrapper -->

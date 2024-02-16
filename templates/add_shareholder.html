@@ -1,0 +1,253 @@
+{% include 'header.html' %}
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    {% include 'left_navigation.html' %}
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Shareholder Information
+      <small id="date" class="col-md-4"></small>
+      <!-- <small>Optional description</small> -->
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="/shareholders"><i class="fa fa-dashboard"></i> Back to List</a></li>
+      <li class="active"></li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <form class="form-horizontal" method="POST" action="/add_shareholder/" enctype="multipart/form-data">{% csrf_token %}
+    <section class="content">
+      <div class="row">
+        <div class="box">
+
+            <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+
+          <div class="box-body">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <div class="panel panel-success" style="box-shadow:2px 2px 2px 2px black;">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><b><center>KANJIRAMATTOM AGRO PRODUCER COMPANY LTD <br>
+                Reg. No. UO1820KL2019PTC057573  <br>
+                  KANJIRAMATTOM – 686585  <br><br>
+                  <span style="color:black;">SHARE HOLDERS RESUME </span></center></b></h3>
+                </div>
+                <div class="panel-body" style="font-weight:bold;">
+                    <div class="form-group row" style="text-align: right;">
+                      <div class="col-md-12">
+        <img id="imagePreview" src="" width="110" height="110" style="border: ridge;">
+                      </div>
+                    </div>
+                    <div class="form-group row" style="text-align: right;">
+                    <div class="col-md-9"></div>
+                      <div class="col-md-3">
+                      <input type="file" class="form-control" id="fileupload" name="member_img" onchange="previewImage(this)" />
+                      </div>
+                    </div>
+
+                 <div class="col-lg-1"></div>
+                 <div class="col-lg-10">
+                 <div class="row" style="border:groove;"><br>
+                  <div class="form-group row">
+
+                    <label class="control-label col-sm-2" for="email">Shareholder Name</label>
+                    <div class="col-sm-4">
+                      <input type="text" data-pms-required="true" autofocus class="form-control" name="member_name" placeholder="Enter Shareholder Name">
+                    </div>
+                    <label class="control-label col-sm-2" for="email">Shareholder ID</label>
+                    <div class="col-sm-3">
+                      <input type="text" data-pms-required="true" autofocus class="form-control" name="member_mid"  placeholder="Enter Shareholder ID" value="{{share}}">
+                    </div>
+                    <div class="col-sm-1"></div>
+                  </div>
+
+
+                  <div class="form-group row">
+                  <label class="control-label col-sm-2" for="email">Address</label>
+                    <div class="col-sm-9">
+                      <textarea autofocus class="form-control" name="member_address" placeholder="Enter Shareholder Address"></textarea>
+                    </div>
+                    <div class="col-sm-1"></div>
+                  </div>
+
+                  <div class="form-group row">
+
+                  <label class="control-label col-sm-2" for="email">PIN</label>
+                  <div class="col-sm-4">
+                    <input type="text" data-pms-required="true" autofocus class="form-control" name="member_pincode" placeholder="PINCODE">
+                  </div>
+                  <div class="col-sm-1"></div>
+                </div>
+
+                 <div class="form-group row">
+                 <label class="control-label col-sm-2" for="email">Age</label>
+                    <div class="col-sm-4">
+                      <input type="text" autofocus class="form-control" name="member_age">
+                    </div>
+
+                    <label class="control-label col-sm-2" for="email">DOB</label>
+                    <div class="col-sm-3">
+                      <input type="date" autofocus class="form-control" name="member_dob" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+
+
+                  <div class="form-group row">
+
+                  <label class="control-label col-sm-2" for="email">Phone Number</label>
+                    <div class="col-sm-4">
+                      <input type="text" autofocus class="form-control" name="member_pnumber"  placeholder="Enter Phone Number">
+                    </div>
+
+                  <label class="control-label col-sm-2" for="email">Joining Date</label>
+                    <div class="col-sm-3">
+                      <input type="date" autofocus class="form-control" name="member_joindate" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label class="control-label col-sm-2" for="email" id="aadhar_number">Aadhar Number</label>
+                        <div class="col-sm-4">
+                        <input type="text" maxlength="14" class="form-control" name="share_aadhar" id="share_aadhar" onkeyup="transform()" placeholder="Enter Shareholder Aadhar Number">
+                    </div>
+
+
+                        <label class="control-label col-sm-2" for="email" id="">Pan Number</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" name="share_pan" placeholder="Enter Shareholder Pan Number">
+                        </div>
+                        <div class="col-sm-1"></div>
+                  </div>
+
+
+
+                      <div class="form-group row">
+                        <label class="control-label col-sm-2" for="email">Bank Name</label>
+                        <div class="col-sm-4">
+                          <input type="text" autofocus class="form-control" name="member_bank">
+                        </div>
+
+                        <label class="control-label col-sm-2" for="email">Branch</label>
+                        <div class="col-sm-3">
+                        <input type="text" class="form-control" name="member_branch">
+                        </div>
+                        <div class="col-sm-1"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label col-sm-2" for="email">Bank Account Number</label>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" name="member_account">
+                        </div>
+
+                        <label class="control-label col-sm-2" for="email">IFSC Code</label>
+                        <div class="col-sm-3">
+                        <input type="text" class="form-control" name="member_ifsc" >
+                        </div>
+                        <div class="col-sm-1"></div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label col-sm-2" for="email">Opening Balance(Purchase)</label>
+                        <div class="col-sm-4">
+                                <input type="text" class="form-control" name="member_sale_balance" placeholder="">
+                            </div>
+
+                      </div>
+
+                      <div class="form-group row">
+                      <label class="control-label col-sm-2" for="email">NO.Of Shares</label>
+                      <div class="col-sm-4">
+                            <input type="text" class="form-control" name="share_shares" placeholder="">
+                        </div>
+
+                        <label class="control-label col-sm-2" for="email">Name Of Dhalam/Reference</label>
+                        <div class="col-sm-3">
+                        <input type="text" class="form-control" name="member_dhalam" >
+                        </div>
+                        <div class="col-sm-1"></div>
+                      </div>
+
+
+                      <div class="form-group row">
+
+                          <label class="control-label col-sm-2" for="email">Nominee Name</label>
+                          <div class="col-sm-4">
+                            <input type="text" autofocus class="form-control" name="member_nominee" >
+                          </div>
+                          <label class="control-label col-sm-2" for="email">Nominee Relation</label>
+                          <div class="col-sm-3">
+                            <input type="text" autofocus class="form-control" name="member_nominee_relation" placeholder="Relation">
+                          </div>
+                          <div class="col-sm-1"></div>
+                    </div>
+
+                  <div class="form-group row">
+                  <label class="control-label col-sm-2" for="email">Address</label>
+                    <div class="col-sm-9">
+                      <textarea autofocus class="form-control" name="member_nominee_address" placeholder="Enter Nominee Address"></textarea>
+                    </div>
+                    <div class="col-sm-1"></div>
+                  </div>
+                    <hr>
+
+
+
+                  <div class="form-group row">
+                 <div class="col-md-5"></div>
+                    <div class="col-md-4">
+                    <label style="text-transform:uppercase;">Signature Of Share Holder </label>
+                      <input type="file" class="form-control" id="fileupload"  name="member_signature" />
+                    </div>
+                  </div>
+
+
+
+                </div></div><div class="col-lg-1"></div><!--row-->
+
+              </div>
+            </div>
+
+            <div class="box-footer">
+            <div class="row">
+              <div class="col-md-6">
+              </div>
+              <div class="col-md-4">
+              <a href="/shareholders/"  ><button type="button" class="btn btn-danger">Cancel</button></a>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <br>
+
+        </div>
+    </section>
+  </form>
+  <!-- /.content -->
+</div>
+
+{% include 'footer.html' %}
+
+<script>
+    function previewImage(input) {
+        var file = input.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+<!--End Panchayat Modal -->
